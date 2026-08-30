@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+config.json
+skills/*.json
+.pytest_cache/
+.venv/
+*.log
