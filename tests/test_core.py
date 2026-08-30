@@ -115,9 +115,9 @@ class TestSkillLibrary(unittest.TestCase):
     def test_save_find_replay(self):
         lib = SkillLibrary(Path(__file__).parent / "tmp_library.json")
         lib.skills = []
-        lib.save("把红色方块送到目标区", "def run(robot):\n    pass\n",
+        lib.save("deliver the red box to the goal zone", "def run(robot):\n    pass\n",
                  verified=True, source="mock")
-        hit = lib.find("把蓝色方块送到目标区旁边")
+        hit = lib.find("move the blue box next to the goal zone")
         self.assertIsNotNone(hit)
         lib.skills = []
         (Path(__file__).parent / "tmp_library.json").unlink(missing_ok=True)
@@ -148,7 +148,7 @@ class TestEndToEnd(unittest.TestCase):
         lib.skills = []
         brain = Brain(self._FlakyGen(), lib, verbose=False)
         result = brain.run(Task(
-            text="走到 3 3",
+            text="walk to 3 3",
             backend_factory=lambda: SimBackend(World()),
             success_check=lambda b: abs(b.world.robot_x - 3.0) < 0.3
                                     and abs(b.world.robot_y - 3.0) < 0.3))
@@ -192,7 +192,7 @@ class TestEndToEnd(unittest.TestCase):
             lib.skills = []
             brain = Brain(codegen, lib, verbose=False)
             result = brain.run(Task(
-                text="走到 2 2",
+                text="walk to 2 2",
                 backend_factory=lambda: SimBackend(World()),
                 success_check=lambda b: abs(b.world.robot_x - 2.0) < 0.3))
             self.assertTrue(result.success, result.log)
@@ -211,13 +211,13 @@ class TestEndToEnd(unittest.TestCase):
         lib.skills = []
         brain = Brain(codegen, lib, verbose=False)
         result = brain.run(Task(
-            text="把红色方块 red_box 送到右上角的目标区",
+            text="Deliver the red box (red_box) to the goal zone in the top-right",
             backend_factory=lambda: SimBackend(build_demo_world()),
             success_check=demo_success))
         self.assertTrue(result.success, result.log)
         self.assertIsNotNone(result.backend)
 
-        hit = lib.find("把红色方块 red_box 送到右上角的目标区")
+        hit = lib.find("Deliver the red box (red_box) to the goal zone in the top-right")
         self.assertIsNotNone(hit)
         lib.skills = []
         (Path(__file__).parent / "tmp_e2e.json").unlink(missing_ok=True)

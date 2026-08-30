@@ -80,7 +80,7 @@ def main() -> None:
     library = SkillLibrary(HERE / "skills" / "library.json")
     brain = Brain(codegen, library)
     task = Task(
-        text=args.task or "把红色方块 red_box 送到右上角的目标区",
+        text=args.task or "Deliver the red box (red_box) to the goal zone in the top-right",
         backend_factory=lambda: SimBackend(build_demo_world()),
         success_check=demo_success)
 

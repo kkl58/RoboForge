@@ -309,7 +309,7 @@ class TestChatSession(unittest.TestCase):
         try:
             transcript = chat_session(
                 codegen_cfg, SimBackend(build_demo_world()),
-                utterances=["把红色方块 red_box 送到右上角的目标区", "quit"],
+                utterances=["Deliver the red box (red_box) to the goal zone in the top-right", "quit"],
                 verbose=False)
         finally:
             os.chdir(HERE.parent)

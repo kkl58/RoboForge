@@ -168,7 +168,7 @@ def random_round(n: int = 150) -> None:
     t0 = time.time()
     for i in range(n):
         world, success = random_world(rng)
-        result = brain.run(Task(text="把红色方块送到目标区",
+        result = brain.run(Task(text="deliver the red box to the goal zone",
                                 backend_factory=lambda w=world: SimBackend(w),
                                 success_check=success, max_attempts=2))
         if result.success:
@@ -188,7 +188,7 @@ def random_round(n: int = 150) -> None:
     replay_ok = 0
     for i in range(30):
         world, success = random_world(rng)
-        result = brain.run(Task(text="把红色方块送到目标区",
+        result = brain.run(Task(text="deliver the red box to the goal zone",
                                 backend_factory=lambda w=world: SimBackend(w),
                                 success_check=success))
         if result.success:

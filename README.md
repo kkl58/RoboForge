@@ -1,7 +1,5 @@
 # RoboForge 🤖
 
-**English** | [中文](README.zh-CN.md)
-
 ![version](https://img.shields.io/badge/version-v0.1--alpha-blueviolet)
 ![status](https://img.shields.io/badge/status-alpha·actively%20developed-orange)
 
